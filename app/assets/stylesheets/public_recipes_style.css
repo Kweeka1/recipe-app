@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.form-container {
+  background-color: rgba(248, 248, 248, 0.95);
+}
+
+.sign-up {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up::after {
+  content: "";
+  background: url("https://cdn.dribbble.com/users/2086468/screenshots/10514304/media/58a8c4ef2d2348b3ae971fd7cb585c5c.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.15;
+  z-index: 1;
+}
