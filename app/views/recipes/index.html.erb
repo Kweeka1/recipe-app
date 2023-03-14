@@ -2,11 +2,11 @@
 <% @recipes.each do |recipe| %>
   <div class="mx-auto col-11 my-5 p-4 gap-4 border border-1 border-dark d-flex gap-4">
     <div class="d-flex flex-column gap-3">
-      <%= recipe.name %>
+      <h3><%= link_to recipe.name, recipe_path(recipe), class: 'text-decoration-none lh-base m-0' %></h3>
       <%= button_to "Delete Recipe", destroy_recipe_path(recipe), method: :delete, class: 'btn btn-primary' %>
     </div>
     <div class="d-flex gap-5">
-      <p><%= recipe.description %></p>
+      <p class="lh-base m-0"><%= recipe.description %></p>
     </div>
   </div>
 <% end %>
