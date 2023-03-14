@@ -7,6 +7,16 @@ class RecipesController < ApplicationController
     @recipe = Recipe.includes(recipe_foods: [:food]).find_by(id: recipe_params[:recipe_id])
   end
 
+  def toggle_visibility
+    @recipe = Recipe.find_by(id: toggle_visibility_params[:recipe_id])
+    if toggle_visibility_params[:visibility] === 'true'
+      @recipe.public = true
+    else
+      @recipe.public = false
+    end
+    @recipe.save
+  end
+
   def new; end
 
   def destroy
@@ -19,5 +29,9 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.permit(:recipe_id)
+  end
+
+  def toggle_visibility_params
+    params.permit(:recipe_id, :visibility)
   end
 end
