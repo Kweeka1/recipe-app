@@ -1,12 +1,13 @@
 <%= stylesheet_link_tag 'recipe_style' %>
+<%= javascript_include_tag 'toggleVisibility' %>
 <h1 class="text-center mb-5"><%= @recipe.name %></h1>
 <div class="col-8 mx-auto">
   <div class="d-flex w-100 justify-content-between">
     <p class="m-0 lh-base">Preparation time: <%= @recipe.preparation_time %> hour</p>
     <div class="d-flex gap-1">
       <p class="float-start m-0 lh-base">Public</p>
-      <input class="toggle-checkbox" type="checkbox" id="switch" />
-      <label class="toggle" for="switch"></label>
+      <input <% if @recipe.public %> <%= :checked %> <% end %> class="toggle-checkbox" type="checkbox" id="switch" />
+      <label id="visibility" class="toggle" for="switch" onclick="toggleVisibility()"><%= @recipe.public %></label>
     </div>
   </div>
   <div>
@@ -42,5 +43,5 @@
     <% end %>
     </tbody>
   </table>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token, id: 'csrf-token' %>
 </div>
-
