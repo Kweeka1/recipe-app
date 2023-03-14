@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -35,8 +33,9 @@ class Ability
       recipe.public == true
     end
 
-    return unless user.present?  # additional permissions for logged in users (they can read their own posts)
-    can [:read, :create, :destroy], Recipe, user_id: user.id
-    can [:read, :create, :destroy], Food, user_id: user.id
+    return unless user.present? # additional permissions for logged in users (they can read their own posts)
+
+    can %i[read create destroy], Recipe, user_id: user.id
+    can %i[read create destroy], Food, user_id: user.id
   end
 end
