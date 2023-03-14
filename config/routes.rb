@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   get 'recipes/new', to: 'recipes#new', as: 'new_recipe'
   delete 'recipes/:recipe_id/destroy', to: 'recipes#destroy', as: 'destroy_recipe'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Foods
+  get 'foods', to: 'foods#index', as: 'foods'
 end
