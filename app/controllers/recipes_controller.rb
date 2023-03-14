@@ -9,11 +9,7 @@ class RecipesController < ApplicationController
 
   def toggle_visibility
     @recipe = Recipe.find_by(id: toggle_visibility_params[:recipe_id])
-    if toggle_visibility_params[:visibility] === 'true'
-      @recipe.public = true
-    else
-      @recipe.public = false
-    end
+    @recipe.public = toggle_visibility_params[:visibility] == 'true'
     @recipe.save
   end
 
