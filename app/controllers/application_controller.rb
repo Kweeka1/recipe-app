@@ -1,19 +1,10 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
   before_action :authenticate_user!
 
   protect_from_forgery with: :exception
 
   before_action :update_allowed_parameters, if: :devise_controller?
-
-  # To redirect users to see all users after sign up
-  def after_sign_up_path_for(_resource)
-    users_path
-  end
-
-  # Determine where to redirect user after successful login.
-  def after_sign_in_path_for(_resource)
-    user_path(current_user)
-  end
 
   protected
 
@@ -21,5 +12,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:name, :email, :password, :password_confirmation)
     end
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, alert: exception.message
   end
 end
