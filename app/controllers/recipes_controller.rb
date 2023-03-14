@@ -7,8 +7,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.includes(recipe_foods: [:food]).find_by(id: recipe_params[:recipe_id])
   end
 
-  def new
-  end
+  def new; end
 
   def destroy
     recipe = Recipe.find_by(id: recipe_params[:recipe_id])
