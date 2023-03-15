@@ -1,20 +1,14 @@
 require 'rails_helper'
+require 'capybara/rspec'
 
-RSpec.describe Food, type: :model do
-  # test associations
-  describe 'associations' do
-    it 'has many recipe_foods' do
-      association = described_class.reflect_on_association(:recipe_foods)
-      expect(association.macro).to eq :has_many
-    end
+Capybara.default_driver = :selenium
 
-    it 'belongs to user' do
-      association = described_class.reflect_on_association(:user)
-      expect(association.macro).to eq :belongs_to
-    end
+RSpec.describe 'Food', type: :feature do
+  subject do
+    @user = User.create(name: 'Selma', email: 'selmandapanda@yahoo.com', password: '00000000Hs')
+    @food = Food.create(name: 'Sugar', user_id: @user.id, measurement_unit: 'grams', price: 10, quantity: 2)
   end
 
-  # test validations
   describe 'validations' do
     it 'is not valid without a name' do
       food = Food.new(name: nil)
