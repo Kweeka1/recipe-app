@@ -1,1 +1,31 @@
-<h1 class="text-center">My Foods</h1>
+<div class="d-flex justify-content-between mx-5 my-4">
+  <h1 class="text-center">My Foods</h1>
+  <%= link_to "Add Food", new_food_path, class: "btn btn-info" %>
+</div>
+
+<div class="mx-auto col-11 my-5 p-4 border border-1 border-dark d-flex">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="col">Food</th>
+      <th class="col">Quantity</th>
+      <th class="col">Measurement Unit</th>
+      <th class="col">Unit Price</th>
+      <th class="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= food.quantity %></td>
+      <td><%= food.measurement_unit %></td>
+      <td>$<%= food.price %></td>
+      <td>
+        <%= button_to "Delete", food_path(food), method: :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
