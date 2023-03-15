@@ -2,6 +2,11 @@ class Food < ApplicationRecord
   belongs_to :user
   has_many :recipe_foods
 
+  validates :name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :measurement_unit, presence: true, length: { maximum: 20 }
+  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :quantity, presence: true, numericality: { greater_than: 0 }
+
   private
 
   def increment_total_food_items(recipe)
