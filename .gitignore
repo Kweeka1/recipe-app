@@ -4,6 +4,8 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+node_modules
+
 # Ignore bundler config.
 /.bundle
 
@@ -32,6 +34,6 @@
 .idea
 .vscode
 .env
-Gemfile
-Gemfile.lock
+./Gemfile
+./Gemfile.lock
 .ruby-version

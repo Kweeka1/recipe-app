@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag 'recipe_style' %>
+<%= javascript_include_tag 'toggleVisibility' %>
+<h1 class="text-center mb-5"><%= @recipe.name %></h1>
+<div class="col-8 mx-auto">
+  <div class="d-flex w-100 justify-content-between">
+    <p class="m-0 lh-base">Preparation time: <%= @recipe.preparation_time %> hour</p>
+    <div class="d-flex gap-1">
+      <p class="float-start m-0 lh-base">Public</p>
+      <input <% if @recipe.public %> <%= :checked %> <% end %> class="toggle-checkbox" type="checkbox" id="switch" />
+      <label id="visibility" class="toggle" for="switch" onclick="toggleVisibility()"><%= @recipe.public %></label>
+    </div>
+  </div>
+  <div>
+    <p class="my-5 lh-base">Cooking time: <%= @recipe.cooking_time %> hour</p>
+  </div>
+  <div>
+    <p><%= @recipe.description %></p>
+  </div>
+</div>
+<div class="my-5 col-8 mx-auto d-flex justify-content-between">
+  <%= button_to 'Generate shopping list', '/#', class: 'btn btn-primary' %>
+  <%= button_to 'Add ingredient', '/#', class: 'btn btn-primary' %>
+</div>
+<hr class="col-10 mx-auto my-5">
+<div class="col-8 mx-auto">
+  <table class="my-5 table table-striped table-bordered">
+    <thead>
+    <tr class="table-active">
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @recipe.recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.food.quantity %> <%= recipe_food.food.measurement_unit %></td>
+        <td>$<%= recipe_food.food.price %></td>
+        <td><%= link_to "Modify", "#" %> <%= link_to "Delete", "#" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token, id: 'csrf-token' %>
+</div>
