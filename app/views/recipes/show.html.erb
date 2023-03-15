@@ -4,11 +4,13 @@
 <div class="col-8 mx-auto">
   <div class="d-flex w-100 justify-content-between">
     <p class="m-0 lh-base">Preparation time: <%= @recipe.preparation_time %> hour</p>
-    <div class="d-flex gap-1">
-      <p class="float-start m-0 lh-base">Public</p>
-      <input <% if @recipe.public %> <%= :checked %> <% end %> class="toggle-checkbox" type="checkbox" id="switch" />
-      <label id="visibility" class="toggle" for="switch" onclick="toggleVisibility()"><%= @recipe.public %></label>
-    </div>
+    <% if can? :create, @recipe %>
+      <div class="d-flex gap-1">
+        <p class="float-start m-0 lh-base">Public</p>
+        <input <% if @recipe.public %> <%= :checked %> <% end %> class="toggle-checkbox" type="checkbox" id="switch" />
+        <label id="visibility" class="toggle" for="switch" onclick="toggleVisibility()"><%= @recipe.public %></label>
+      </div>
+    <% end %>
   </div>
   <div>
     <p class="my-5 lh-base">Cooking time: <%= @recipe.cooking_time %> hour</p>
@@ -19,7 +21,9 @@
 </div>
 <div class="my-5 col-8 mx-auto d-flex justify-content-between">
   <%= button_to 'Generate shopping list', '/#', class: 'btn btn-primary' %>
-  <%= button_to 'Add ingredient', '/#', class: 'btn btn-primary' %>
+  <% if can? :create, @recipe %>
+    <%= button_to 'Add ingredient', '/#', class: 'btn btn-primary' %>
+  <% end %>
 </div>
 <hr class="col-10 mx-auto my-5">
 <div class="col-8 mx-auto">
