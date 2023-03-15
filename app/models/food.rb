@@ -7,10 +7,10 @@ class Food < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :quantity, presence: true, numericality: { greater_than: 0 }
 
-  private
+  # private
 
-  def increment_total_food_items(recipe)
-    recipe.total_food_items.increment
-    recipe.save
-  end
+  # def increment_total_food_items(recipe)
+  #   recipe.total_food_items.increment
+  #   recipe.save
+  # end
 end
