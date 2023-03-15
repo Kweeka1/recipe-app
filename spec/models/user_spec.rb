@@ -6,7 +6,7 @@ describe 'User' do
   let(:user1) { user(:peter) }
 
   subject do
-    User.create(name: user1.name, email: user1.email, encrypted_password: user1.password)
+    User.new(name: user1.name, email: user1.email, encrypted_password: user1.password)
   end
 
   before { subject.save }

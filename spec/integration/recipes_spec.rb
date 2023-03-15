@@ -1,7 +1,13 @@
 require_relative '../rails_helper'
 
 RSpec.describe 'recipes', type: :system do
-  context 'Authentication' do
+  before do
+    user = User.new(name: 'martin', email: 'martin@gmail.com', password: '123456', password_confirmation: '123456')
+    user.skip_confirmation!
+    user.save!
+  end
+
+  context 'User authentication' do
     it 'Un-authenticated user should be redirected to login page' do
       visit root_path
       expect(page).to have_content('Login Page')
@@ -18,7 +24,7 @@ RSpec.describe 'recipes', type: :system do
     end
   end
 
-  context 'recipes pages' do
+  context 'Recipes pages' do
     before do
       visit root_path
       within '#new_user' do
@@ -39,7 +45,7 @@ RSpec.describe 'recipes', type: :system do
     end
   end
 
-  context 'create recipe' do
+  context 'Recipe creation' do
     before do
       visit root_path
       within '#new_user' do
@@ -49,7 +55,7 @@ RSpec.describe 'recipes', type: :system do
       click_button 'Log in'
     end
 
-    it 'User should be able to create recipe' do
+    it 'User should be able to create a recipe' do
       visit new_recipe_path
       within '#recipe-form' do
         fill_in 'Name', with: 'Pasta'
@@ -63,7 +69,7 @@ RSpec.describe 'recipes', type: :system do
     end
   end
 
-  context 'Change recipe visibility to private' do
+  context 'Recipe visibility' do
     before do
       visit root_path
       within '#new_user' do
@@ -83,8 +89,8 @@ RSpec.describe 'recipes', type: :system do
       click_button 'Save'
     end
 
-    it 'User should be able to change recipe visibility' do
-      find("#visibility").click
+    it 'User should be able to change recipe\'s visibility' do
+      find('#visibility').click
       sleep 1
       visit public_recipes_path
       expect(page).not_to have_content 'Pasta'
@@ -92,7 +98,7 @@ RSpec.describe 'recipes', type: :system do
 
     it 'User should be able to see his recipe in my recipes page' do
       visit recipes_path
-      find(:xpath, "/html/body/div[2]/div[1]/h3/a").click
+      find(:xpath, '/html/body/div[2]/div[1]/h3/a').click
       expect(page).to have_current_path "/recipes/#{Recipe.last.id}"
     end
   end

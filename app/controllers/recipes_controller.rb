@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   def toggle_visibility
     @recipe = Recipe.find_by(id: toggle_visibility_params[:recipe_id])
     @recipe.update_column(:public, toggle_visibility_params[:visibility] == 'true')
-    render json: { status: "successful" }
+    render json: { status: 'successful' }
   end
 
   def new

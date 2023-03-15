@@ -7,7 +7,7 @@ describe 'Recipe' do
   let(:user1) { user(:peter) }
 
   subject do
-    Recipe.create(
+    Recipe.new(
       name: recipe1.name,
       preparation_time: recipe1.preparation_time,
       cooking_time: recipe1.cooking_time,
