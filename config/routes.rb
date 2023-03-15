@@ -12,4 +12,11 @@ Rails.application.routes.draw do
   delete 'recipes/:recipe_id/destroy', to: 'recipes#destroy', as: 'destroy_recipe'
   post 'recipes/:recipe_id/toggle_visibility', to: 'recipes#toggle_visibility', as: 'toggle_recipe_visibility'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Foods
+  resources :foods, only: [:index, :new, :create, :destroy]
+  # get 'foods', to: 'foods#index', as: 'foods'
+  # get 'foods/new', to: 'foods#new', as: 'new_food'
+  # post 'foods', to: 'foods#create', as: 'create_food'
+  # delete 'foods/destroy', to: 'foods#destroy', as: 'destroy_food'
 end

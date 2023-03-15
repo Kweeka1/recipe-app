@@ -268,7 +268,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   rails-controller-testing
   redis (~> 4.0)
-  rspec-rails
+  rspec-rails (~> 6.0.0)
   selenium-webdriver
   sprockets-rails
   stimulus-rails
