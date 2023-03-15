@@ -9,9 +9,9 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params.merge(user_id: current_user.id))
-    
+
     if @food.save
-      redirect_to foods_path, notice: 'Food was successfully created.' 
+      redirect_to foods_path, notice: 'Food was successfully created.'
     else
       render :new, alert: 'Cannot create food, retry again.'
     end
@@ -21,7 +21,7 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @food.destroy
 
-    redirect_to foods_path, notice: 'Food was successfully destroyed.' 
+    redirect_to foods_path, notice: 'Food was successfully destroyed.'
   end
 
   private
@@ -29,5 +29,4 @@ class FoodsController < ApplicationController
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
-
 end
