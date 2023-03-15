@@ -13,5 +13,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Foods
-  get 'foods', to: 'foods#index', as: 'foods'
+  resources :foods, only: [:index, :new, :create, :destroy]
+  # get 'foods', to: 'foods#index', as: 'foods'
+  # get 'foods/new', to: 'foods#new', as: 'new_food'
+  # post 'foods', to: 'foods#create', as: 'create_food'
+  # delete 'foods/destroy', to: 'foods#destroy', as: 'destroy_food'
 end
