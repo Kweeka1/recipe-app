@@ -8,7 +8,7 @@ function toggleVisibility() {
     form.append("visibility", visibility.textContent);
     form.append("authenticity_token", token.value);
 
-    fetch(window.location.href + '/toggle_visibility', {
+    fetch(window.location.href + '/visibility', {
         method: 'POST',
         body: form
     });
