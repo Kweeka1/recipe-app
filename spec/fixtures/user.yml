@@ -1,0 +1,5 @@
+peter:
+  id: 1
+  name: peter
+  email: peter@gmail.com
+  encrypted_password: 123456

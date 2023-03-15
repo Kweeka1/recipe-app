@@ -1,0 +1,17 @@
+pasta:
+  id: 1
+  name: pasta
+  preparation_time: 0.5
+  cooking_time: 1
+  description: Cooking pasta is a simple process that can be done in a few easy steps.\nBring a large pot of water to a boil. You'll need at least 4-6 quarts of water per pound of pasta\nAdd salt to the boiling water. You'll need about 1 tablespoon of salt per 4 quarts of water. This will help flavor the pasta and prevent it from sticking together.\nAdd the pasta to the boiling water. Stir it gently to prevent it from clumping together.\nCook the pasta according to the package instructions. Different types of pasta will have different cooking times, but most will take between 8 and 12 minutes to cook.\nTaste the pasta for doneness. It should be tender but still firm (al dente).\nDrain the pasta in a colander, and rinse it with cold water to stop the cooking process and prevent it from sticking together.\nServe the pasta with your favorite sauce, or use it in a recipe.\nEnjoy your delicious pasta!
+  public: true
+  user_id: 1
+
+orange_juice:
+  id: 2
+  name: Orange juice
+  preparation_time: 0.1
+  cooking_time: 0.2
+  description: With your Hands this is my go-to method because I don't have to get any tools dirty and it's super simple. Start by rinsing your oranges well, then slice them in half and start squeezing into a glass. Keep going until you've made enough for a full glass! If you need a little help, this tool can make things a lot easier.
+  public: false
+  user_id: 1
