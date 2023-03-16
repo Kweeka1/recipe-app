@@ -1,9 +1,8 @@
 <%= stylesheet_link_tag 'recipe_style' %>
-<%= javascript_include_tag 'toggleVisibility' %>
 <h1 class="text-center mb-5"><%= @recipe.name %></h1>
 <div class="col-8 mx-auto">
   <div class="d-flex w-100 justify-content-between">
-    <p class="m-0 lh-base">Preparation time: <%= @recipe.preparation_time %> hour</p>
+    <p class="m-0 lh-base">Preparation time: <%= @recipe.preparation_time %> minutes</p>
     <% if can? :create, @recipe %>
       <div class="d-flex gap-1">
         <p class="float-start m-0 lh-base">Public</p>
@@ -13,7 +12,7 @@
     <% end %>
   </div>
   <div>
-    <p class="my-5 lh-base">Cooking time: <%= @recipe.cooking_time %> hour</p>
+    <p class="my-5 lh-base">Cooking time: <%= @recipe.cooking_time %> minutes</p>
   </div>
   <div>
     <p><%= @recipe.description %></p>
@@ -49,3 +48,4 @@
   </table>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token, id: 'csrf-token' %>
 </div>
+<%= javascript_include_tag 'toggleVisibility' %>

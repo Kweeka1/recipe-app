@@ -11,11 +11,23 @@ class RecipesController < ApplicationController
 
   def toggle_visibility
     @recipe = Recipe.find_by(id: toggle_visibility_params[:recipe_id])
-    @recipe.public = toggle_visibility_params[:visibility] == 'true'
-    @recipe.save
+    @recipe.update_column(:public, toggle_visibility_params[:visibility] == 'true')
+    render json: { status: 'successful' }
   end
 
-  def new; end
+  def new
+    @recipe = Recipe.new
+  end
+
+  def create
+    @recipe = Recipe.new(create_recipe_params.merge(user_id: current_user.id))
+
+    if @recipe.save
+      redirect_to recipe_path @recipe
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     recipe = Recipe.find_by(id: recipe_params[:recipe_id])
@@ -30,6 +42,10 @@ class RecipesController < ApplicationController
   end
 
   def toggle_visibility_params
-    params.permit(:recipe_id, :visibility)
+    params.permit(:recipe_id, :visibility, :authenticity_token)
+  end
+
+  def create_recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

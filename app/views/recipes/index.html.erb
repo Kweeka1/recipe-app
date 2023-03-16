@@ -1,4 +1,7 @@
 <h1 class="text-center">My Recipes</h1>
+<div class="text-center">
+  <%= link_to 'Add Recipe', 'recipes/new', method: :get %>
+</div>
 <% @recipes.each do |recipe| %>
   <div class="mx-auto col-11 my-5 p-4 gap-4 border border-1 border-dark d-flex gap-4">
     <div class="d-flex flex-column gap-3">

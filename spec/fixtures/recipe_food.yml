@@ -1,0 +1,17 @@
+recipe_food1:
+  id: 1
+  quantity: 5
+  recipe_id: 2
+  food_id: 1
+
+recipe_food2:
+  id: 2
+  quantity: 4
+  recipe_id: 1
+  food_id: 2
+
+recipe_food3:
+  id: 3
+  quantity: 4
+  recipe_id: 1
+  food_id: 3

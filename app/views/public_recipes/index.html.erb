@@ -3,11 +3,11 @@
   <div class="mx-auto col-11 my-5 p-4 gap-4 border border-1 border-dark">
     <div class="d-flex gap-5 align-items-end">
       <h2 class="lh-base"><%= link_to recipe.name, recipe_path(recipe), class: 'text-decoration-none lh-base m-0' %></h2>
-      <p class="lh-base">Total food items: <%= recipe.total_food_items %></p>
+      <p class="lh-base">Total food items: </p>
     </div>
     <div class="d-flex gap-5">
       <p>By: <%= recipe.user.name %></p>
-      <p>Total Price: <%= recipe.total_price %></p>
+      <p>Total Price: </p>
     </div>
   </div>
 <% end %>

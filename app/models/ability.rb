@@ -35,7 +35,7 @@ class Ability
 
     return unless user.present? # additional permissions for logged in users (they can read their own posts)
 
-    can %i[read create destroy], Recipe, user_id: user.id
-    can %i[read create destroy], Food, user_id: user.id
+    can :manage, Recipe, user_id: user.id
+    can :manage, Food, user_id: user.id
   end
 end

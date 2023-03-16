@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 
   # Recipes
   get 'recipes', to: 'recipes#index', as: 'recipes'
-  get 'recipes/:recipe_id', to: 'recipes#show', as: 'recipe'
   get 'recipes/new', to: 'recipes#new', as: 'new_recipe'
+  post 'recipes/create', to: 'recipes#create', as: 'create_recipe'
+
+  get 'recipes/:recipe_id', to: 'recipes#show', as: 'recipe'
+  post 'recipes/:recipe_id/visibility', to: 'recipes#toggle_visibility', as: 'toggle_recipe_visibility'
   delete 'recipes/:recipe_id/destroy', to: 'recipes#destroy', as: 'destroy_recipe'
-  post 'recipes/:recipe_id/toggle_visibility', to: 'recipes#toggle_visibility', as: 'toggle_recipe_visibility'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Foods
