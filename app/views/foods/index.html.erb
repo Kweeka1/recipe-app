@@ -1,6 +1,6 @@
-<div class="d-flex justify-content-between mx-5 my-4">
+<div class="d-flex justify-content-between mx-5 my-5">
   <h1 class="text-center">My Foods</h1>
-  <%= link_to "Add Food", new_food_path, class: "btn btn-info" %>
+  <%= link_to "Add Food", new_food_path, class: "btn btn-info m-2" %>
 </div>
 
 <div class="mx-auto col-11 my-5 p-4 border border-1 border-dark d-flex">
@@ -22,7 +22,9 @@
       <td><%= food.measurement_unit %></td>
       <td>$<%= food.price %></td>
       <td>
-        <%= button_to "Delete", food_path(food), method: :delete %>
+        <% if can? :destroy, food %>
+          <%= button_to "Delete", food_path(food), method: :delete, class: "btn btn-danger" %>
+        <% end %>
       </td>
     </tr>
     <% end %>
