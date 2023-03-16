@@ -6,7 +6,7 @@ class GeneralShoppingListsController < ApplicationController
     end
     sum
   end
-    
+
   def index
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_foods = RecipeFood.all
