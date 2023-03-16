@@ -15,8 +15,7 @@ Rails.application.routes.draw do
 
   # Foods
   resources :foods, only: [:index, :new, :create, :destroy]
-  # get 'foods', to: 'foods#index', as: 'foods'
-  # get 'foods/new', to: 'foods#new', as: 'new_food'
-  # post 'foods', to: 'foods#create', as: 'create_food'
-  # delete 'foods/destroy', to: 'foods#destroy', as: 'destroy_food'
+  resources :recipes do
+    resources :general_shopping_lists, only: [:index]
+  end
 end
