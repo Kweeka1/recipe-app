@@ -19,9 +19,9 @@
   </div>
 </div>
 <div class="my-5 col-8 mx-auto d-flex justify-content-between">
-  <%= button_to 'Generate shopping list', '/#', class: 'btn btn-primary' %>
+  <%= link_to 'Generate shopping list', '/#', class: 'btn btn-primary' %>
   <% if can? :create, @recipe %>
-    <%= button_to 'Add ingredient', '/#', class: 'btn btn-primary' %>
+    <%= link_to 'Add ingredient', ingredients_path(@recipe), class: 'btn btn-primary' %>
   <% end %>
 </div>
 <hr class="col-10 mx-auto my-5">
@@ -41,7 +41,7 @@
         <td><%= recipe_food.food.name %></td>
         <td><%= recipe_food.food.quantity %> <%= recipe_food.food.measurement_unit %></td>
         <td>$<%= recipe_food.food.price %></td>
-        <td><%= link_to "Modify", "#" %> <%= link_to "Delete", "#" %></td>
+        <td><%= button_to "Delete", remove_ingredient_path(@recipe, recipe_food), method: :delete %></td>
       </tr>
     <% end %>
     </tbody>

@@ -19,6 +19,31 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def ingredients
+    @recipe_id = recipe_params[:recipe_id]
+    @foods = Food.all
+  end
+
+  def add_ingredients
+    @recipe_food = RecipeFood.new(
+      quantity: add_ingredients_params[:quantity],
+      recipe_id: add_ingredients_params[:recipe_id],
+      food_id: add_ingredients_params[:food_id]
+    )
+
+    if @recipe_food.save
+      render json: { status: 'Food item successfully added' }, status: 201
+    else
+      render :ingredients, status: :unprocessable_entity
+    end
+  end
+
+  def remove_ingredient
+    recipe_food = RecipeFood.find_by(id: recipe_params[:recipe_food_id])
+    recipe_food.destroy
+    redirect_to recipe_path(recipe_params[:recipe_id])
+  end
+
   def create
     @recipe = Recipe.new(create_recipe_params.merge(user_id: current_user.id))
 
@@ -38,7 +63,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.permit(:recipe_id)
+    params.permit(:recipe_id, :recipe_food_id)
   end
 
   def toggle_visibility_params
@@ -47,5 +72,9 @@ class RecipesController < ApplicationController
 
   def create_recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+  end
+
+  def add_ingredients_params
+    params.permit(:recipe_id, :food_id, :quantity, :authenticity_token)
   end
 end
