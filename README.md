@@ -127,6 +127,16 @@ If you like this project give it a star!
 ## Acknowledgments 
 
 - Microverse 
+- Code Reviewers
+
+## ❓ FAQ <a name="faq"></a>
+
+- **Can I use this code?**
+  - Sure! It's open source, feel free to fork it.
+
+- **Can I contribute to this project?**
+
+  - Contact me and I'll add you as a contributor. Alternatively, you can leave an issue, it'll be well appreciated.
 
 ## License 
 
