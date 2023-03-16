@@ -15,11 +15,11 @@
         </tr>
     </thead>
     <tbody>
-     <% @recipe.recipe_foods.each do |r| %>
+     <% @recipe.recipe_foods.each do |recipe| %>
     <tr>
-      <th scope="row"><%= r.food.name %></th>
-      <td><%= r.quantity %></td>
-      <td><%= r.food.price * r.quantity %></td>
+      <th scope="row"><%= recipe.food.name %></th>
+      <td><%= recipe.quantity %></td>
+      <td><%= recipe.food.price * recipe.quantity %></td>
     </tr>
     <% end %>
     </tbody>
