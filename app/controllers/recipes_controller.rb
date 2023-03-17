@@ -6,11 +6,11 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe_food = RecipeFood.select("MIN(id) AS id, SUM(quantity) AS quantity, recipe_id, food_id")
-                             .includes(:recipe, :food)
-                             .where(recipe_id: recipe_params[:recipe_id])
-                             .group(:recipe_id, :food_id)
-    @recipe = @recipe_food[0].recipe
+    @recipe = Recipe.select('recipes.*, MIN(recipe_foods.id) AS recipe_food_id, SUM(recipe_foods.quantity) AS quantity, recipe_id, food_id')
+                    .includes(recipe_foods: :food)
+                    .left_joins(recipe_foods: :food)
+                    .where(id: recipe_params[:recipe_id])
+                    .group(:recipe_id, :food_id, :'recipes.id')[0]
   end
 
   def toggle_visibility
@@ -59,7 +59,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(create_recipe_params.merge(user_id: current_user.id))
 
-    if @recipe.save
+    if @recipe.save!
       redirect_to recipe_path @recipe
     else
       render :new, status: :unprocessable_entity
