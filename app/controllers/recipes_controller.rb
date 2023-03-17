@@ -6,13 +6,20 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.includes(recipe_foods: [:food]).find_by(id: recipe_params[:recipe_id])
+    @recipe_food = RecipeFood.select("MIN(id) AS id, SUM(quantity) AS quantity, recipe_id, food_id")
+                             .where(recipe_id: recipe_params[:recipe_id])
+                             .group(:recipe_id, :food_id)
+    @recipe = @recipe_food[0].recipe
   end
 
   def toggle_visibility
     @recipe = Recipe.find_by(id: toggle_visibility_params[:recipe_id])
-    @recipe.update_column(:public, toggle_visibility_params[:visibility] == 'true')
-    render json: { status: 'successful' }
+
+    if @recipe.update_column(:public, toggle_visibility_params[:visibility] == 'true')
+      render json: { status: 'successful' }
+    else
+      render json: { status: 'not successful' }
+    end
   end
 
   def new
@@ -40,8 +47,12 @@ class RecipesController < ApplicationController
 
   def remove_ingredient
     recipe_food = RecipeFood.find_by(id: recipe_params[:recipe_food_id])
-    recipe_food.destroy
-    redirect_to recipe_path(recipe_params[:recipe_id])
+
+    if recipe_food.destroy
+      redirect_to recipe_path(recipe_params[:recipe_id])
+    else
+      render recipe_path(recipe_params[:recipe_id]), status: :not_found
+    end
   end
 
   def create
@@ -56,8 +67,12 @@ class RecipesController < ApplicationController
 
   def destroy
     recipe = Recipe.find_by(id: recipe_params[:recipe_id])
-    recipe.destroy
-    redirect_to recipes_path
+
+    if recipe.destroy
+      redirect_to recipes_path, status: :accepted
+    else
+      redirect_to recipes_path, status: :not_found
+    end
   end
 
   private
