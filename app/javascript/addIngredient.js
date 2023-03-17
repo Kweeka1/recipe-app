@@ -12,7 +12,7 @@ anchors.forEach((anchor) =>{
         const form = new FormData();
         form.append("food_id", item.id.match(/\d+/)[0]);
         form.append("authenticity_token", token.value);
-        form.append("quantity", quantity.textContent.match(/\d+/)[0]);
+        form.append("quantity", quantity.value);
 
         const res = await fetch(window.location.href, {
             method: 'POST',
