@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_food = RecipeFood.select("MIN(id) AS id, SUM(quantity) AS quantity, recipe_id, food_id")
+                             .includes(:recipe, :food)
                              .where(recipe_id: recipe_params[:recipe_id])
                              .group(:recipe_id, :food_id)
     @recipe = @recipe_food[0].recipe
