@@ -17,7 +17,7 @@
       <tr>
         <th scope="row"><%= recipe_food.food.name %></th>
         <td><%= recipe_food.quantity %></td>
-        <td><%= recipe_food.food.price * recipe_food.quantity %></td>
+        <td>$<%= (recipe_food.food.price * recipe_food.quantity).truncate(2) %></td>
       </tr>
     <% end %>
     </tbody>
