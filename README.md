@@ -131,4 +131,4 @@ If you like this project give it a star!
 
 ## License 
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT.md) licensed.
