@@ -1,0 +1,25 @@
+<h1 class="text-center mb-4">Shopping List</h1>
+<section class="col-10 mx-auto">
+  <div class="d-flex justify-content-between">
+    <h3>Amount of food items to buy: <%= @recipe_foods.length %> </h3>
+    <h3>Total price: $<%= sum(@recipe_foods) %> </h3>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <th scope="row"><%= recipe_food.food.name %></th>
+        <td><%= recipe_food.quantity %></td>
+        <td>$<%= (recipe_food.food.price * recipe_food.quantity).truncate(2) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>

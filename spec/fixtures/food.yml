@@ -1,0 +1,31 @@
+orange:
+  id: 1
+  name: orange
+  measurement_unit: pieces
+  price: 0.5
+  quantity: 4
+  user_id: 1
+
+tomato:
+  id: 2
+  name: tomato
+  measurement_unit: pieces
+  price: 0.8
+  quantity: 4
+  user_id: 1
+
+garlic:
+  id: 3
+  name: garlic
+  measurement_unit: gloves
+  price: 1
+  quantity: 4
+  user_id: 1
+
+thyme:
+  id: 4
+  name: thyme
+  measurement_unit: grams
+  price: 0.2
+  quantity: 5
+  user_id: 1

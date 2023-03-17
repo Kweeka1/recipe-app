@@ -1,0 +1,32 @@
+<%= form_with model: @recipe, url: create_recipe_path, id: 'recipe-form', class: 'pb-5' do |form| %>
+  <div class="container col-xl-10 col-xxl-8">
+    <div class="row align-items-center">
+      <div class="col-md-10 mx-auto">
+        <h1 class="py-5">New Recipe</h1>
+        <div class="p-4 p-md-5 border rounded-3 bg-light">
+          <div class="form-outline mb-4">
+            <%= form.label :name, class: "form-label" %>
+            <%= form.text_field :name, class:"form-control" %>
+          </div>
+          <div class="form-outline mb-4">
+            <%= form.label :preparation_time, class: "form-label" %>
+            <%= form.text_field :preparation_time,class:"form-control" %>
+          </div>
+          <div class="form-outline mb-4">
+            <%= form.label :cooking_time, class: "form-label" %>
+            <%= form.text_field :cooking_time, class:"form-control" %>
+          </div>
+          <div class="form-outline mb-4">
+            <%= form.label :description, class: "form-label" %>
+            <%= form.text_area :description, class:"form-control" %>
+          </div>
+          <div class="form-check mb-3">
+            <%= form.label :public, class: "form-check-label" %>
+            <%= form.check_box :public, class: "form-check-input me-2" %>
+          </div>
+          <%= form.submit "Save", class:"w-100 btn btn-lg btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
