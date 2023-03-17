@@ -12,11 +12,4 @@ class Food < ApplicationRecord
   validates :measurement_unit, presence: true, length: { maximum: 20 }
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :quantity, presence: true, numericality: { greater_than: 0 }
-
-  # private
-
-  # def increment_total_food_items(recipe)
-  #   recipe.total_food_items.increment
-  #   recipe.save
-  # end
 end
