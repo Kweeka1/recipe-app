@@ -7,7 +7,7 @@
     </div>
     <div class="d-flex gap-5">
       <p>By: <%= recipe.user.name %></p>
-      <p>Total Price: <%= sum(recipe.recipe_foods) %> </p>
+      <p>Total Price: $<%= sum(recipe.recipe_foods).truncate(2) %> </p>
     </div>
   </div>
 <% end %>
