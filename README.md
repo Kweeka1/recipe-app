@@ -52,6 +52,10 @@
 - User registration system (using Devise gem)
 - User authorization system to manage permissions and access control (using CanCanCan gem)
 
+## Live Demo
+
+- [Check live version](https://recipe-app-uxhz.onrender.com/)
+
 ## Getting Started 
 
 > To get a local copy up and running follow these simple steps.
